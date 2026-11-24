@@ -36,7 +36,11 @@ func NewMQTT(cfg Config, store *Store, hub *Hub) *MQTT {
 func (m *MQTT) Start() {
 	opts := mqtt.NewClientOptions()
 	opts.AddBroker(m.cfg.MQTTBroker)
-	opts.SetClientID("backend-" + randID(""))
+	// 固定 clientID + CleanSession=false：后端重启期间 broker 仍为其排队消息，
+	// 兑现 contracts/mqtt.md 中「后端使用持久订阅」的承诺。重复投递由 event_id / result_seq 去重。
+	opts.SetClientID("tinygate-backend")
+	opts.SetCleanSession(false)
+	opts.SetResumeSubs(true)
 	opts.SetUsername(m.cfg.MQTTUser)
 	opts.SetPassword(m.cfg.MQTTPass)
 	opts.SetAutoReconnect(true)

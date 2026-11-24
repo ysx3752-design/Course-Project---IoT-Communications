@@ -31,10 +31,10 @@ func loadConfig() Config {
 	return Config{
 		Addr: env("TG_ADDR", ":8080"),
 		MySQLDSN: env("TG_MYSQL_DSN",
-			"tinygate:Tg2026_IoT!@tcp(127.0.0.1:3306)/tinygate?charset=utf8mb4&loc=UTC&timeout=5s"),
+			"tinygate:CHANGE_ME@tcp(127.0.0.1:3306)/tinygate?charset=utf8mb4&loc=UTC&timeout=5s"),
 		MQTTBroker:  env("TG_MQTT_BROKER", "tcp://127.0.0.1:1883"),
 		MQTTUser:    env("TG_MQTT_USER", "backend"),
-		MQTTPass:    env("TG_MQTT_PASS", "backend_secret"),
+		MQTTPass:    env("TG_MQTT_PASS", "CHANGE_ME"),
 		Token:       env("TG_TOKEN", "tinygate-demo-token"),
 		CORSOrigins: env("TG_CORS", "*"),
 		WebDir:      env("TG_WEB_DIR", "web"),

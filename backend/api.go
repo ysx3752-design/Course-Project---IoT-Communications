@@ -44,6 +44,12 @@ func writeErr(w http.ResponseWriter, status int, code, msg string) {
 	})
 }
 
+// writeAccepted 用于 202：按 REST 惯例给出新资源的 Location
+func writeAccepted(w http.ResponseWriter, location string, data any) {
+	w.Header().Set("Location", location)
+	writeData(w, 202, data)
+}
+
 func writeList(w http.ResponseWriter, status int, items any, nextCursor *string) {
 	writeData(w, status, map[string]any{"items": items, "next_cursor": nextCursor})
 }
@@ -307,7 +313,7 @@ func (a *API) createCommand(w http.ResponseWriter, r *http.Request) {
 		}
 		cmd, err := a.store.GetCommand(cmdID)
 		if err == nil {
-			writeData(w, 202, cmd)
+			writeAccepted(w, "/api/v1/commands/"+cmd.CommandID, cmd)
 			return
 		}
 	}
@@ -380,7 +386,7 @@ func (a *API) createCommand(w http.ResponseWriter, r *http.Request) {
 		a.hub.Broadcast(cmd.GatewayID, Notification{SchemaVersion: 1, Type: "command.updated", Data: cmd})
 	}
 
-	writeData(w, 202, cmd)
+	writeAccepted(w, "/api/v1/commands/"+cmd.CommandID, cmd)
 }
 
 func contains(list []string, v string) bool {

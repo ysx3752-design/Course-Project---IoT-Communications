@@ -1,1 +1,21 @@
-/密钥.txt
+# 个人 / 本地配置
+project.private.config.json
+.vscode/
+.idea/
+
+# 依赖与构建产物
+node_modules/
+backend/tg
+backend/tg-new
+backend/tinygate-new
+*.exe
+
+# 凭据，禁止入库
+密钥.txt
+secrets.*
+*.local.toml
+
+# 系统
+.DS_Store
+Thumbs.db
+*.log
