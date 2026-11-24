@@ -1,0 +1,208 @@
+.hero-name {
+  font-size: 38rpx;
+  font-weight: 600;
+  color: #1a1f29;
+}
+
+.hero-meta {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+}
+
+.ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ctrl-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ctrl-label {
+  font-size: 22rpx;
+  color: #8d96a4;
+}
+
+.ctrl-state {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #5b6472;
+  margin-top: 6rpx;
+}
+.ctrl-state.on {
+  color: #0b7a3d;
+}
+
+/* 自定义大开关 */
+.toggle {
+  width: 120rpx;
+  height: 64rpx;
+  border-radius: 999rpx;
+  background: #c6cdd7;
+  position: relative;
+  transition: background 0.2s;
+}
+.toggle.on {
+  background: #12a150;
+}
+.toggle.disabled {
+  opacity: 0.45;
+}
+.toggle .knob {
+  position: absolute;
+  top: 6rpx;
+  left: 6rpx;
+  width: 52rpx;
+  height: 52rpx;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2rpx 6rpx rgba(16, 24, 40, 0.25);
+  transition: transform 0.2s;
+}
+.toggle.on .knob {
+  transform: translateX(56rpx);
+}
+
+/* 只读大数值 */
+.readout {
+  display: flex;
+  align-items: baseline;
+}
+.readout-num {
+  font-size: 68rpx;
+  font-weight: 600;
+  line-height: 1;
+  color: #1a1f29;
+}
+.readout-unit {
+  font-size: 28rpx;
+  color: #8d96a4;
+  margin-left: 8rpx;
+}
+
+/* 状态行 */
+.kv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid #f2f4f7;
+}
+.kv:last-child {
+  border-bottom: none;
+}
+.kv-left {
+  display: flex;
+  flex-direction: column;
+}
+.kv-name {
+  font-size: 28rpx;
+  color: #1a1f29;
+}
+.kv-ep {
+  margin-top: 4rpx;
+  font-size: 20rpx;
+  color: #a8b0bc;
+}
+.kv-val {
+  font-size: 28rpx;
+}
+
+/* 命令 */
+.cmd {
+  padding: 20rpx;
+  background: #fafbfc;
+  border-radius: 14rpx;
+  margin-bottom: 16rpx;
+}
+.cmd:last-child {
+  margin-bottom: 0;
+}
+.cmd-id {
+  font-size: 22rpx;
+}
+.cmd-body {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #5b6472;
+}
+.st {
+  font-size: 22rpx;
+  padding: 2rpx 14rpx;
+  border-radius: 999rpx;
+  background: #f1f3f7;
+  color: #5b6472;
+}
+.st.run {
+  background: #eef3ff;
+  color: #2a5bd7;
+}
+.st.ok {
+  background: #e9f8ef;
+  color: #0b7a3d;
+}
+.st.bad {
+  background: #fdeceb;
+  color: #a71f16;
+}
+
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12rpx;
+}
+.chip-step {
+  font-size: 18rpx;
+  font-family: Menlo, Consolas, monospace;
+  color: #b3bac5;
+  background: #ffffff;
+  border: 1rpx solid #eceff3;
+  border-radius: 6rpx;
+  padding: 2rpx 10rpx;
+  margin-right: 8rpx;
+  margin-bottom: 6rpx;
+}
+.chip-step.done {
+  color: #0b7a3d;
+  background: #e9f8ef;
+  border-color: #c3e8d3;
+}
+.chip-step.now {
+  color: #2a5bd7;
+  background: #eef3ff;
+  border-color: #c9daff;
+}
+
+.cmd-err {
+  margin-top: 10rpx;
+  font-size: 20rpx;
+  color: #a71f16;
+  background: #fdeceb;
+  padding: 8rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+/* 事件 */
+.ev {
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f2f4f7;
+}
+.ev:last-child {
+  border-bottom: none;
+}
+.ev-type {
+  font-size: 20rpx;
+  color: #8d96a4;
+  background: #f5f6f8;
+  padding: 2rpx 10rpx;
+  border-radius: 6rpx;
+}
+.ev-sub {
+  margin-top: 6rpx;
+}
+.ev-text {
+  font-size: 24rpx;
+  color: #5b6472;
+}

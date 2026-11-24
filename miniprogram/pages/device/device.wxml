@@ -1,0 +1,82 @@
+<view class="page">
+
+  <view wx:if="{{!ready}}" class="card">
+    <view class="empty">{{loading ? '加载中…' : '设备不存在或未加载'}}</view>
+  </view>
+
+  <block wx:else>
+
+    <view class="card hero">
+      <view class="row">
+        <view class="hero-name">{{dev.name}}</view>
+        <text class="badge {{dev.online ? 'on' : 'off'}}">{{dev.online ? '在线' : '离线'}}</text>
+      </view>
+      <view class="hero-meta mono">{{dev.meta}}</view>
+      <view class="hero-meta muted">最近活动 {{dev.ago}}</view>
+
+      <view class="divider"></view>
+
+      <view class="ctrl">
+        <view class="ctrl-text">
+          <text class="ctrl-label">{{control.label}}</text>
+          <text class="ctrl-state {{control.on ? 'on' : ''}}">{{control.stateText}}</text>
+        </view>
+
+        <view wx:if="{{control.hasSwitch}}"
+              class="toggle {{control.on ? 'on' : ''}} {{control.disabled ? 'disabled' : ''}}"
+              bindtap="onToggle">
+          <view class="knob"></view>
+        </view>
+
+        <view wx:else class="readout">
+          <text class="readout-num">{{control.value}}</text>
+          <text class="readout-unit">{{control.unit}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">实际状态<text class="hint">设备反馈值</text></view>
+      <view wx:for="{{states}}" wx:key="key" class="kv">
+        <view class="kv-left">
+          <text class="kv-name">{{item.name}}</text>
+          <text class="kv-ep mono">端点 {{item.endpoint}}</text>
+        </view>
+        <text class="kv-val mono">{{item.value}}</text>
+      </view>
+      <view wx:if="{{!states.length}}" class="empty">暂无状态</view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">命令记录<text class="hint">受理 → 下发 → 接收 → 完成</text></view>
+      <view wx:for="{{commands}}" wx:key="id" class="cmd">
+        <view class="row">
+          <text class="cmd-id mono">{{item.id}}</text>
+          <text class="st {{item.statusClass}}">{{item.statusText}}</text>
+        </view>
+        <view class="cmd-body">{{item.body}}</view>
+        <view class="flow">
+          <text wx:for="{{item.flow}}" wx:for-item="f" wx:key="name" class="chip-step {{f.cls}}">{{f.name}}</text>
+        </view>
+        <view wx:if="{{item.errText}}" class="cmd-err">{{item.errText}}</view>
+      </view>
+      <view wx:if="{{!commands.length}}" class="empty">还没有命令，点上方开关下发一条</view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">事件历史<text class="hint">按接收时间倒序</text></view>
+      <view wx:for="{{events}}" wx:key="key" class="ev">
+        <view class="row">
+          <text class="mono">{{item.time}}</text>
+          <text class="ev-type">{{item.type}}</text>
+        </view>
+        <view class="row ev-sub">
+          <text class="ev-text">{{item.text}}</text>
+          <text wx:if="{{item.replayed}}" class="tag">补传</text>
+        </view>
+      </view>
+      <view wx:if="{{!events.length}}" class="empty">暂无事件</view>
+    </view>
+
+  </block>
+</view>

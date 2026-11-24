@@ -1,0 +1,29 @@
+{
+  "description": "TinyGate 物联网控制台 - 微信小程序",
+  "projectname": "tinygate-miniprogram",
+  "appid": "wxf5fa5f212598d495",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": false,
+    "newFeature": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "checkInvalidKey": true,
+    "uploadWithSourceMap": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "condition": {
+    "miniprogram": {
+      "list": []
+    }
+  }
+}
